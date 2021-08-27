@@ -5,6 +5,10 @@ import passport from "passport";
 // Databse Modal
 import { OrderModel } from "../../database/allModels";
 
+//  Validation 
+import { ValidateOrderId, ValidateNewOrderUser } from "../../validation/order";
+
+
 const Router = express.Router();
 
 /*
@@ -14,8 +18,9 @@ Params  _id
 Access  Public
 Method  GET
 */
-Router.get("/:_id", async (req, res) => {
+Router.get("/:_id", passport.authenticate("jwt", {session: false}), async (req, res) => {
     try {
+        await ValidateOrderId(req.params);
         const { _id } = req.params
 
         const getOrders = await OrderModel.findOne({ user: _id});   
@@ -41,6 +46,8 @@ Method  POST
 */
 Router.post("/new/:_id", async (req, res) => {
     try {
+        await ValidateOrderId(req.params);
+        await ValidateNewOrderUser(re.body);
         const { _id } = req.params;
         const{ orderDetails } = req.body;
 
