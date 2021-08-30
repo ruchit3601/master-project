@@ -55,7 +55,7 @@ const LargeNav = () => {
                         />
                     </div>
                 </div>
-                <div className=" ml-28 flex gap-6 ">
+                <div className=" ml-24 flex gap-5 ">
                     <button className="text-gray-500 text-lg hover:text-gray-800">Login</button>
                     <button className="text-gray-500 text-lg hover:text-gray-800">Signup</button>
                 </div>
