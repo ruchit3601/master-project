@@ -10,8 +10,8 @@ const DeliveryCarousal = () => {
 
     const categories = [
         {
-            image: "https://b.zmtcdn.com/data/dish_images/5f1305ff860aeebffbca92ea1d8d1cf31612436209.png",
-            title: "Idli",
+            image: "https://b.zmtcdn.com/data/dish_images/c598d69f4864f3cba4b0de2d8efc0e521612436494.png",
+            title: "Pizza",
         },
         {
             image: "https://b.zmtcdn.com/data/dish_images/9c179e4b2beb3b5e026346f946e502931613232962.png",
@@ -59,15 +59,15 @@ const DeliveryCarousal = () => {
 
     return (
         <>
-            <h1 className="text-xl mb-4 font-semibold">Inspiration for your first order</h1>
-            <div className="lg:hidden flex flex-wrap gap-3 lg:gap-0 justify-between">
+            <h1 className="text-3xl mb-4 text-gray-800 font-semibold">Inspiration for your first order</h1>
+            <div className="lg:hidden flex gap-3 lg:gap-0 flex-wrap justify-between">
                 {
                     categories.map((food) => (
                         <DeliveryCategory {...food} />
                     ))
                 }
             </div>
-            <div className="hidden lg:block">
+            <div className="hidden lg:block ">
                 <Slider {...settings}>
                 {
                     categories.map((food) => (

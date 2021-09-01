@@ -4,7 +4,7 @@ import { BsStarFill } from "react-icons/bs"
 const RestaurantCard = (props) => {
     return (
         <>
-            <div className="bg-white p-4 mb-4 w-full rounded-2xl transition duration-700 hover:shadow-2xl md:w-1/2  lg:w-1/3">
+            <div className="bg-white p-4 mb-4 w-full rounded-2xl transition duration-700 ease-in-out hover:shadow-2xl md:w-1/2  lg:w-1/3">
                 <div className="w-full h-56 lg:h-64 relative">
                    <div className="absolute w-full bottom-4 flex items-end justify-between">
                     <div className="flex flex-col gap-2 items-start">
@@ -35,7 +35,7 @@ const RestaurantCard = (props) => {
                     </div>
                     <div className="flex items-center justify-between text-gray-500">
                         <p>{props.cuisine.join(", ")}</p>
-                        <p>₹ {props.averageCost}for one </p>
+                        <p>₹ {props.averageCost} for one </p>
                     </div>
                 </div>
             </div>   

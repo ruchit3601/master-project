@@ -2,12 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 // components
-import Delivery from "./Delivery";
-import Dining from "./Dining";
-import NightLife from "./NightLife";
-import Nutrition from "./Nutrition";
+import Delivery from "../Components/Delivery";
+import Dining from "../Components/Dining";
+import NightLife from "../Components/NightLife";
+import Nutrition from "../Components/Nutrition";
 
-const Master = () => {
+const Home = () => {
   const { type } = useParams();
   return (
     <div className="my-5">
@@ -19,4 +19,4 @@ const Master = () => {
   );
 };
 
-export default Master;
+export default Home;
