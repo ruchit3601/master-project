@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, useParams } from "react-router-dom"
 import { IoMdArrowDropright } from "react-icons/io"
+import { MdContentCopy } from "react-icons/md"
+import { FaDirections } from "react-icons/fa"
 import Slider from 'react-slick';
 import ReactStars from "react-rating-stars-component";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -11,7 +13,7 @@ import MenuCollection from '../../Components/restaurant/MenuCollection';
 import MenuSimilarRestaurantCard from '../../Components/restaurant/MenuSimilarRestaurantCard';
 import { NextArrow, PrevArrow } from '../../Components/CarousalArrow';
 import ReviewCard from '../../Components/restaurant/Reviews/reviewCard';
-
+import Mapview from '../../Components/restaurant/Mapview'
 
 
 
@@ -85,12 +87,12 @@ const Overview = () => {
                     </div>
                     <div className="my-4">
                         <h4 className="text-2xl font-normal">Rate your experience for</h4>
-                        <div class="mt-2 text-xl">
+                        <div class="mt-2 flex items-center text-xl">
                             <label class="inline-flex items-center">
                                 <input type="radio" className="form-radio text-zomato-400" name="radio-colors" checked/>
                                 <span class="ml-2">Dining</span>
                             </label>
-                            <label class="inline-flex items-center ml-6">
+                            <label class="inline-flex items-center md:ml-6">
                                 <input type="radio" className="form-radio ml-40  text-zomato-400" name="radio-colors"  />
                                 <span class="ml-2">Delivery</span>
                             </label>
@@ -102,6 +104,14 @@ const Overview = () => {
                                 activeColor="#ffd700"
                             />
                     </div>
+                    <div className="my-4 w-full md:hidden flex flex-col gap-4">
+                        <Mapview 
+                            phno="+919900894453"
+                            title="KFC" 
+                            mapLocation={[12.96998, 77.60989]}
+                            address="4th Floor, Garuda Mall, Magrath Road, Near Brigade Road, Bangalore"
+                        />
+                    </div>
                     <div className="my-4 flex flex-col gap-1">
                         <ReviewCard />
                         <ReviewCard />
@@ -110,29 +120,14 @@ const Overview = () => {
                 </div>
                 <aside 
                     style={{ height: "fit-content" }}
-                    className="hidden md:block md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md">
-                   <div>
-                        <h4 className="text-xl font-normal">Call</h4>
-                        <h5 className="text-zomato-400 font-normal text-lg">+919900894453</h5>
-                   </div>
-                   <div className="gap-3">
-                        <h4 className="text-2xl font-normal">Direction</h4>
-                        <div className="w-full h-48">
-                            <MapContainer center={[12.96998, 77.60989]} zoom={13} scrollWheelZoom={false}>
-                                <TileLayer
-                                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                />
-                                <Marker position={[12.96998, 77.60989]}>
-                                    <Popup>
-                                    A pretty CSS3 popup. <br /> Easily customizable.
-                                    </Popup>
-                                </Marker>
-                            </MapContainer>
-                        </div>
-                   </div>
-                </aside>
-                
+                    className="hidden md:flex md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex-col gap-4">
+                        <Mapview 
+                            phno="+919900894453"
+                            title="KFC" 
+                            mapLocation={[12.96998, 77.60989]}
+                            address="4th Floor, Garuda Mall, Magrath Road, Near Brigade Road, Bangalore"
+                        />
+                </aside>          
             </div>  
         </>
     )
