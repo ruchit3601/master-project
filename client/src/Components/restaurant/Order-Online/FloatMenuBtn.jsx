@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { HiMenu } from "react-icons/hi"
-import { icons } from 'react-icons/lib';
 import { MdClose } from "react-icons/md"
 
 //  components
