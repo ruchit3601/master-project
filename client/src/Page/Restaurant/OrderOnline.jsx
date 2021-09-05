@@ -37,18 +37,6 @@ const OrderOnline = (props) => {
                                 },
                             ]}
                         />
-                        <FoodList 
-                            title="Pizza"
-                            items={[
-                                {
-                                    price: "1000",
-                                    rating: 3,
-                                    description: "Save 33% with our best-seller bucket of 4pc Hot & crispy chicken, 6 Hot Wings, 4 chicken strips , 3 Dips & a chilled Pepsi PET [serves 2-3 ]",
-                                    title: "Ultimate Savings Bucket",
-                                    image: "https://b.zmtcdn.com/data/dish_photos/f3b/68853ca3fac35a5a7c76d74fc945ff3b.jpg",
-                                },
-                            ]}
-                        />
                     </section>
                 </div>
             </div> 
