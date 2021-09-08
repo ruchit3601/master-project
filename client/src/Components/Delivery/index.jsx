@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
 //  components
@@ -10,47 +11,13 @@ import RestaurantCard from '../RestaurantCard';
 
 const Delivery = () => {
 
-    const [ restaurantList, setRestaurantList ] = useState([
-        {
-            _id:123456,
-            photos: [
-                "https://b.zmtcdn.com/data/pictures/8/19698708/181ffb2678f4e075f863612d4522cb1d_o2_featured_v2.jpg?output-format=webp",
-            ],
-            name: "Raffaele's Ristorante Pizzeria",
-            cuisine: ["Pizza", "Italian", "Beverages"],
-            averageCost: 100,
-            isPro: true,
-            isOff: 80,
-            durationOfdelivery: 47,
-            restaurantReviewValue: 4.1,
-        },
-        {
-            _id:123456-2,
-            photos: [
-                "https://b.zmtcdn.com/data/pictures/6/19257266/f00da77a93539279c09b60992357afeb_o2_featured_v2.jpg?output-format=webp",
-            ],
-            name: "Magnolia Bakery",
-            cuisine: ["Bakery", "Desserts"],
-            averageCost: 100,
-            isPro: true,
-            isOff: 80,
-            durationOfdelivery: 47,
-            restaurantReviewValue: 4.1,
-        },
-        {
-            _id:123456-3,
-            photos: [
-                "https://b.zmtcdn.com/data/pictures/6/19257266/f00da77a93539279c09b60992357afeb_o2_featured_v2.jpg?output-format=webp",
-            ],
-            name: "Magnolia Bakery",
-            cuisine: ["Bakery", "Desserts"],
-            averageCost: 100,
-            isPro: true,
-            isOff: 80,
-            durationOfdelivery: 47,
-            restaurantReviewValue: 4.1,
-        },
-    ]);
+    const [ restaurantList, setRestaurantList ] = useState([]);
+
+    const reduxState = useSelector((globalStore) => globalStore.restaurant.restaurants);
+
+    useEffect(() => {   
+        
+    },[reduxState.restaurants]);
     return (
         <>
             <DeliveryCarousal />
