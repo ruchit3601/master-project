@@ -15,7 +15,7 @@ const Home = () => {
   const { type } = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() =>{
+  useEffect(() => {
     dispatch(getRestaurant());
   }, []);
   
