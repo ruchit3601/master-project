@@ -49,7 +49,7 @@ const RestaurantCard = (props) => {
                         </span>
                     </div>
                     <div className="flex items-center justify-between text-gray-500">
-                        <p>{props.cuisine.join(", ")}</p>
+                        <p>{props.cuisine?.join(", ")}</p>
                         <p>₹ {props.averageCost} for one </p>
                     </div>
                 </div>

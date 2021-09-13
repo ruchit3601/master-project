@@ -15,10 +15,13 @@ const Delivery = () => {
 
     const reduxState = useSelector(
       (globalStore) => globalStore.restaurant.restaurants
+        
+
     );
   
     useEffect(() => {
         reduxState.restaurants && setRestaurantList(reduxState.restaurants);
+        console.log(reduxState.restaurants)
     }, [reduxState.restaurants]);
 
     return (
@@ -29,7 +32,7 @@ const Delivery = () => {
                 Delivery Restaurants in Ahmedabad
             </h1>
             <div className="flex justify-between  flex-wrap">
-                {restaurantList.map((restaurant) => (
+                {restaurantList?.map((restaurant) => (
                     <RestaurantCard 
                         {...restaurant} 
                         key={restaurant._id} 
