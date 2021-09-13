@@ -20,12 +20,14 @@ const Delivery = () => {
     );
   
     useEffect(() => {
-        reduxState.restaurants && setRestaurantList(reduxState.restaurants);
-        console.log(reduxState.restaurants)
-    }, [reduxState.restaurants]);
+        reduxState.restaurants && setRestaurantList(reduxState?.restaurants);
+        
+    }, [reduxState?.restaurants]);
 
+    
     return (
         <>
+        {console.log(restaurantList)}
             <DeliveryCarousal />
             {/* <Brand /> */}
             <h1 className="text-xl mt-4 mb-2 md:mt-8 md:text-3xl md:font-semibold">
