@@ -11,12 +11,14 @@ import RestaurantCard from '../RestaurantCard';
 
 const Delivery = () => {
 
-    const [ restaurantList, setRestaurantList ] = useState([]);
+    const [restaurantList, setRestaurantList] = useState([]);
 
-    const reduxState = useSelector((globalStore) => globalStore.restaurant.restaurants);
-
-    useEffect(() => {   
-        reduxState.restaurants && setRestaurantList(reduxState.restaurants)
+    const reduxState = useSelector(
+      (globalStore) => globalStore.restaurant.restaurants
+    );
+  
+    useEffect(() => {
+        reduxState.restaurants && setRestaurantList(reduxState.restaurants);
     }, [reduxState.restaurants]);
 
     return (
@@ -31,7 +33,7 @@ const Delivery = () => {
                     <RestaurantCard 
                         {...restaurant} 
                         key={restaurant._id} 
-                        WhereIsthisres="asf"
+                        whereIsthisres="asf"
                     />
                 ))}
             </div>
