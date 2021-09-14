@@ -6,14 +6,16 @@ import { getImage } from '../Redux/Reducer/Image/Image.action';
 
 
 const RestaurantCard = (props) => {
+
     console.log(props.photos)
     const [image, setImage] = useState({
         images: [],       
     });
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        props.photos && dispatch(getImage(props.photos)).then((data) => 
+        props?.photos && dispatch(getImage(props?.photos)).then((data) => 
             setImage(data.payload.image)
         );
     }, [props.photos])
