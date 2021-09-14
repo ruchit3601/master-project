@@ -19,9 +19,9 @@ const RestaurantCard = (props) => {
     }, [props.photos])
 
     return (
-        <Link to={`/restaurant/${props._id}`} className="w-full">
-            <div className="bg-white p-4 mb-4 w-full rounded-2xl transition duration-700 ease-in-out hover:shadow-2xl md:w-1/2  lg:w-1/3">
-                <div className="w-full h-56 lg:h-64 relative">
+        <Link to={`/restaurant/${props._id}`} className="w-full md:w-1/2 lg:w-1/3 hover:shadow-2xl transition duration-200 ease-in-out">
+            <div className="bg-white p-4 mb-4">
+                <div className="w-full h-56 lg:h-64 relative rounded-2xl">
                    <div className="absolute w-full bottom-4 flex items-end justify-between">
                     <div className="flex flex-col gap-2 items-start">
                         {props.isPro && (

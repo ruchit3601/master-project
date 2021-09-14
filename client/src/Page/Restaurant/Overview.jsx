@@ -129,7 +129,7 @@ const Overview = () => {
                             phno="+919900894453"
                             title="KFC" 
                             mapLocation={[12.96998, 77.60989]}
-                            address="4th Floor, Garuda Mall, Magrath Road, Near Brigade Road, Bangalore"
+                            address="4th Floor, Garuda Mall, Magrath Road, Near Brigde Road, Bangalore"
                         />
                 </aside>          
             </div>  

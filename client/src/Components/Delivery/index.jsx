@@ -14,15 +14,11 @@ const Delivery = () => {
     const [restaurantList, setRestaurantList] = useState([]);
 
     const reduxState = useSelector(
-      (globalStore) => globalStore.restaurant.restaurants
-        
-
-    );
-  
-    useEffect(() => {
-        reduxState.restaurants && setRestaurantList(reduxState?.restaurants);
-        
-    }, [reduxState?.restaurants]);
+        (globalStore) => globalStore?.restaurant.restaurants
+      );
+      useEffect(() => {
+        reduxState?.restaurants && setRestaurantList(reduxState?.restaurants);
+      }, [reduxState?.restaurants]);
 
     
     return (

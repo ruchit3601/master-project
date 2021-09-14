@@ -8,6 +8,29 @@ import { ReviewModel } from "../../database/allModels";
 const Router = express.Router();
 
 /*
+Route   /
+Desc    Get all reviews
+Params  resid
+BODY    none
+Access  Public
+Method  GET
+*/
+Router.get("/:resid", async ( req, res ) => {
+    try {
+        const reviews = await ReviewModel.find({restaurant: req.params.resid})
+
+        await ReviewModel.create(reviewData);
+
+        return res.json({ reviews })
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+
+    }
+});
+
+
+
+/*
 Route   /new
 Desc    Add new food review/rating
 Params  none
