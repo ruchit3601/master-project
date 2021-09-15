@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from "react-router-dom"
 import { IoMdArrowDropright } from "react-icons/io"
-import { MdContentCopy } from "react-icons/md"
-import { FaDirections } from "react-icons/fa"
 import Slider from 'react-slick';
+import { useSelector, useDispatch } from "react-redux"
 import ReactStars from "react-rating-stars-component";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 
 //  Component
@@ -13,12 +11,16 @@ import MenuCollection from '../../Components/restaurant/MenuCollection';
 import MenuSimilarRestaurantCard from '../../Components/restaurant/MenuSimilarRestaurantCard';
 import { NextArrow, PrevArrow } from '../../Components/CarousalArrow';
 import ReviewCard from '../../Components/restaurant/Reviews/reviewCard';
-import Mapview from '../../Components/restaurant/Mapview'
+import Mapview from '../../Components/restaurant/Mapview';
+import { getImage } from "../../Redux/Reducer/Image/Image.action"
 
 
 
 const Overview = () => {
+    const [menuImage, setMenuImages] = useState({ images: [] })
+
     const { id } = useParams();
+
     const settings ={
         arrows: true,
         infinite: true,
@@ -28,8 +30,28 @@ const Overview = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     };
+
+    const reduxState = useSelector(globalStore => 
+        globalStore.restaurant.selectedRestaurant.restaurant
+    );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(reduxState){
+            dispatch(getImage(reduxState?.menuImage)).then((data) => { 
+                const images = [];
+                data.payload.image?.images.map(({location}) => images?.push(location));
+                setMenuImages(images);
+            });
+        }
+    }, [])
+
     const ratingChanged = (newRating) => {
         console.log(newRating);
+      };
+      const getLatLong = (mapAddress) => {
+          return mapAddress?.split(",").map((item) => parseFloat(item));
       };
     return (
         <>
@@ -48,24 +70,20 @@ const Overview = () => {
                             <MenuCollection 
                                 menuTitle="Menu"
                                 pages="3"
-                                image={[
-                                    "https://b.zmtcdn.com/data/menus/574/50574/3821d94dd9b5bb166934a5704ccc5c6c.jpg",
-                                    "https://b.zmtcdn.com/data/menus/574/50574/3821d94dd9b5bb166934a5704ccc5c6c.jpg",
-                                    "https://b.zmtcdn.com/data/menus/574/50574/3821d94dd9b5bb166934a5704ccc5c6c.jpg",
-                                ]}
+                                image={menuImage}
                             />
                     </div>
                     <h4 className="text-2xl font-normal my-4">Cuisines</h4>
                     <div className="flex flex-wrap gap-2">
-                        <span className="border border-gray-400 text-blue-600 px-2 py-1 rounded-full">Burger</span>
-                        <span className="border border-gray-400 text-blue-600 px-2 py-1 rounded-full">Fast Food</span>
-                        <span className="border border-gray-400 text-blue-600 px-2 py-1 rounded-full">Beverages</span>
-                        <span className="border border-gray-400 text-blue-600 px-2 py-1 rounded-full">Desserts</span>
+                        {reduxState?.cuisine.map((data) =>(
+                        <span className="border border-gray-400 text-blue-600 px-2 py-1 rounded-full">{ data }</span>
+
+                        ))}
 
                     </div>
                     <div className="my-4">
                         <h4 className="text-2xl font-normal">Average Cost</h4>
-                        <h6>₹250 for one order (approx.)</h6>
+                        <h6>₹{reduxState?.averageCost} for one order (approx.)</h6>
                         <small className="text-gray-500">Exclusive of applicable taxes and charges, if any</small>
                     </div>
                     <div className="my-4">
@@ -110,10 +128,10 @@ const Overview = () => {
                     </div>
                     <div className="my-4 w-full md:hidden flex flex-col gap-4">
                         <Mapview 
-                            phno="+919900894453"
-                            title="KFC" 
-                            mapLocation={[12.96998, 77.60989]}
-                            address="4th Floor, Garuda Mall, Magrath Road, Near Brigade Road, Bangalore"
+                                title={reduxState?.name} 
+                                phno={`+91${reduxState?.contactNumber}`}
+                                mapLocation={getLatLong(reduxState?.mapLocation)}
+                                address={reduxState?.address}
                         />
                     </div>
                     <div className="my-4 flex flex-col gap-1">
@@ -126,10 +144,10 @@ const Overview = () => {
                     style={{ height: "fit-content" }}
                     className="hidden md:flex md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex-col gap-4">
                         <Mapview 
-                            phno="+919900894453"
-                            title="KFC" 
-                            mapLocation={[12.96998, 77.60989]}
-                            address="4th Floor, Garuda Mall, Magrath Road, Near Brigde Road, Bangalore"
+                            title={reduxState?.name} 
+                            phno={`+91${reduxState?.contactNumber}`}
+                            mapLocation={getLatLong(reduxState?.mapLocation)}
+                            address={reduxState?.address}
                         />
                 </aside>          
             </div>  

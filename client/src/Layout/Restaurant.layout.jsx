@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { TiStarOutline } from "react-icons/ti"
 import { RiDirectionLine, RiShareForwardLine } from "react-icons/ri"
 import { BiBookmarkPlus } from "react-icons/bi"
@@ -14,28 +16,43 @@ import TabContainer from '../Components/restaurant/Tabs';
 import CartContainer from '../Components/Cart/CartContainer';
 
 
-
+// Redux actions
+import { getSpecificRestaurant } from "../Redux/Reducer/restaurant/restaurant.action";
+import { getImage } from "../Redux/Reducer/Image/Image.action";
 
 const RestaurantLayout = (props) => {
+    const [restaurant, setRestaurant] = useState({
+        images: [],
+        name: "",
+        cuising: "",
+        address: "",
+      });
+
+    const { id } = useParams();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSpecificRestaurant(id)).then((data) => {
+            setRestaurant(prev => ({
+                ...prev,
+                ...data.payload.restaurant,
+            }));
+            dispatch(getImage(data.payload.restaurant.photos)).then(data => setRestaurant(prev => ({...prev, ...data.payload.image })) 
+            );
+        });
+    }, []);
 
     return (
         <>
             <RestaurantNavbar />
             <div className="container mx-auto px-4 lg:px-20">
-                <ImageGrid images={[
-                    "https://b.zmtcdn.com/data/pictures/4/50574/9410759d611db9c62c3acc23c1f27e06.jpg",
-                    "https://b.zmtcdn.com/data/pictures/4/50574/9410759d611db9c62c3acc23c1f27e06.jpg",
-                    "https://b.zmtcdn.com/data/pictures/4/50574/9410759d611db9c62c3acc23c1f27e06.jpg",
-                    "https://b.zmtcdn.com/data/pictures/4/50574/9410759d611db9c62c3acc23c1f27e06.jpg",
-                    "https://b.zmtcdn.com/data/pictures/4/50574/9410759d611db9c62c3acc23c1f27e06.jpg",
-                    ]}
-                />
+            <ImageGrid images={restaurant.images} />
                 <RestaurantInfo 
-                    name="KFC"
-                    restaurantRating="3.6"
-                    deliveryRating="3.5"
-                    cuisine="Burger, Fast Food, Beverages, Desserts"
-                    address="Brigade Road, Bangalore"
+                    name={restaurant?.name}
+                    restaurantRating={restaurant?.rating || 0}
+                    deliveryRating={restaurant?.rating || 0}
+                    cuisine={restaurant?.cuising}
+                    address={restaurant?.address}
                 />
                 <div className="my-4 flex flex-wrap gap-3">
                     <InfoButtons isActive>
