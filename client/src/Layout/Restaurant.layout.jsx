@@ -41,12 +41,16 @@ const RestaurantLayout = (props) => {
             );
         });
     }, []);
+    /// wait
+// let me show u doubt
+// menu is taking time idk why
+// bt here look
 
     return (
         <>
             <RestaurantNavbar />
-            <div className="container mx-auto px-4 lg:px-20">
-            <ImageGrid images={restaurant.images} />
+            <div className="container mx-auto px-4 lg:px-20 pb-10 ">
+            <ImageGrid images={restaurant?.images} />
                 <RestaurantInfo 
                     name={restaurant?.name}
                     restaurantRating={restaurant?.rating || 0}

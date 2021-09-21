@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from "classnames";
 
 const MenuCategory = (props) => {
+    console.log(props)
     return (
         <>
             <div className={classnames({
@@ -11,7 +12,7 @@ const MenuCategory = (props) => {
                 
             >
                 <h3 id={props.name} onClick={props.onClickHandler}>
-                    {props.name} ({props.items.length})
+                    {props.name} ({props?.length})
                 </h3>
             </div>
         </>

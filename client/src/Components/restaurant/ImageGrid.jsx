@@ -21,12 +21,12 @@ const ImageGrid = (props) => {
                 </div>
                 <div className="w-1/4 h-full flex flex-col gap-1 overflow-hidden">
                     <img 
-                        src={props?.images[1]} 
+                        src={props?.images[1]?.location} 
                         alt="restaurant image" 
                         className="w-full h-2/4 object-cover rounded-lg transform transition duration-500 hover:scale-110"
                     />
                      <img 
-                        src={props.images[2]} 
+                        src={props.images[2]?.location} 
                         alt="restaurant image" 
                         className="w-full h-2/4 object-cover rounded-lg transform transition duration-500 hover:scale-110"
                     />
@@ -34,7 +34,7 @@ const ImageGrid = (props) => {
                 <div className="w-1/4 h-full flex flex-col gap-1 ">
                    <div className="w-full h-2/4 relative ">
                         <img 
-                        src={props.images[3]} 
+                        src={props.images[3]?.location} 
                         alt="restaurant image" 
                             className="w-full h-full object-cover rounded-lg "
                         />
@@ -43,7 +43,7 @@ const ImageGrid = (props) => {
                    </div>
                    <div className="w-full h-2/4 relative ">
                         <img 
-                        src={props.images[4]} 
+                        src={props.images[4]?.location} 
                         alt="restaurant image" 
                             className="w-full h-full object-cover rounded-lg "
                         />

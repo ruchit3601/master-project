@@ -8,10 +8,12 @@ export const getReviews = (resId) => async (dispatch) => {
       method: "GET",
       url: `http://localhost:5000/reviews/${resId}`,
     });
+
     return dispatch({
       type: GET_REVIEW,
       payload: reviewList.data,
     });
+
   } catch (error) {
     return dispatch({
       type: "ERROR",
@@ -26,10 +28,12 @@ export const postReviews = (reviewData) => async (dispatch) => {
       method: "POST",
       url: "http://localhost:5000/reviews/new",
     });
+
     return dispatch({
       type: POST_REVIEW,
-      payload: { ...reviewData },
+      payload: {...reviewData},
     });
+
   } catch (error) {
     return dispatch({
       type: "ERROR",

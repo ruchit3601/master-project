@@ -12,12 +12,16 @@ import MenuSimilarRestaurantCard from '../../Components/restaurant/MenuSimilarRe
 import { NextArrow, PrevArrow } from '../../Components/CarousalArrow';
 import ReviewCard from '../../Components/restaurant/Reviews/reviewCard';
 import Mapview from '../../Components/restaurant/Mapview';
-import { getImage } from "../../Redux/Reducer/Image/Image.action"
+
+import { getImage } from "../../Redux/Reducer/Image/Image.action";
+import { getReviews } from "../../Redux/Reducer/Reviews/review.action";
+
 
 
 
 const Overview = () => {
     const [menuImage, setMenuImages] = useState({ images: [] })
+    const [reviews, setReviews] = useState([]);
 
     const { id } = useParams();
 
@@ -31,8 +35,8 @@ const Overview = () => {
         prevArrow: <PrevArrow />,
     };
 
-    const reduxState = useSelector(globalStore => 
-        globalStore.restaurant.selectedRestaurant.restaurant
+    const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant?.selectedRestaurant?.restaurant
     );
 
     const dispatch = useDispatch();
@@ -41,9 +45,12 @@ const Overview = () => {
         if(reduxState){
             dispatch(getImage(reduxState?.menuImage)).then((data) => { 
                 const images = [];
-                data.payload.image?.images.map(({location}) => images?.push(location));
+                data.payload.image?.images?.map(({location}) => images?.push(location));
                 setMenuImages(images);
             });
+            dispatch(getReviews(reduxState?._id)).then((data) => 
+                setReviews(data.payload.reviews)
+            );
         }
     }, [])
 
@@ -125,6 +132,9 @@ const Overview = () => {
                                 size={24}
                                 activeColor="#ffd700"
                             />
+                            {reviews.map((reviewData) => (
+                                <ReviewCard {...reviewData} />
+                            ))}
                     </div>
                     <div className="my-4 w-full md:hidden flex flex-col gap-4">
                         <Mapview 
