@@ -34,7 +34,7 @@ BODY      none
 Access    Public
 Method    GET  
 */
-Router.get("/", async (req, res) => {
+Router.get("/:_id", async (req, res) => {
   try {
     const user = await UserModel.findById(req.params._id);
     const { fullname } = user;

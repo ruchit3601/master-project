@@ -52,7 +52,7 @@ const Overview = () => {
                 setReviews(data.payload.reviews)
             );
         }
-    }, [])
+    }, []);
 
     const ratingChanged = (newRating) => {
         console.log(newRating);
