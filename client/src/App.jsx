@@ -15,6 +15,8 @@ import Menu from "./Page/Restaurant/Menu";
 import Photos from "./Page/Restaurant/Photos";
 import Checkout from "./Page/Checkout";
 import RedirectRestaurant from "./Page/Restaurant/Redirect";
+import GoogleAuth from "./Page/GoogleAuth";
+
 
 // axios global seetings
 if(localStorage.zomatoUser) {
@@ -33,6 +35,7 @@ function App() {
 
       <HomeLayoutHOC path="/:type" exact component={Home} />
       <RestaurantLayoutHOC path="/restaurant/:id/overview" exact component={Overview} />
+      <HomeLayoutHOC path="/google/:token" exact component={GoogleAuth} />
       <RestaurantLayoutHOC path="/restaurant/:id/order-online" exact component={OrderOnline} />
       <RestaurantLayoutHOC path="/restaurant/:id/menu" exact component={Menu} />
       <RestaurantLayoutHOC path="/restaurant/:id/reviews" exact component={Reviews} />
