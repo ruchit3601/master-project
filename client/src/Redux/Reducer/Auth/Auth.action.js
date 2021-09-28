@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { SIGN_IN, SIGN_UP, GOOGLE_AUTH } from "./Auth.type";
+import { SIGN_IN, SIGN_UP, GOOGLE_AUTH, SIGN_OUT } from "./Auth.type";
 
 // redux actions
-import { getMyself } from "../User/user.action";
+import { getMyself, clearUser } from "../User/user.action";
 import GoogleAuth from "../../../Page/GoogleAuth";
 
 export const signIn = (userData) => async (dispatch) => {
@@ -17,11 +17,11 @@ export const signIn = (userData) => async (dispatch) => {
     getMyself();
 
     localStorage.setItem(
-      "zomatoUser", 
-      JSON.stringify({token: User.data.token})
+      "zomatoUser",
+      JSON.stringify({ token: User.data.token })
     );
 
-    return dispatch({ type : SIGN_IN, payload: User.data });
+    return dispatch({ type: SIGN_IN, payload: User.data });
   } catch (error) {
     return dispatch({ type: "ERROR", payload: error });
   }
@@ -29,7 +29,7 @@ export const signIn = (userData) => async (dispatch) => {
 
 export const googleAuth = (token) => async (dispatch) => {
   try {
-    localStorage.setItem("zomatoUser", JSON.stringify({token}));
+    localStorage.setItem("zomatoUser", JSON.stringify({ token }));
 
     getMyself();
 
@@ -38,6 +38,17 @@ export const googleAuth = (token) => async (dispatch) => {
     return dispatch({ type: "ERROR", payload: error });
   }
 };
+export const signOut = () => async (dispatch) => {
+  try {
+    localStorage.removeItem("zomatoUser");
+    clearUser();
+    window.location.href = "http://localhost:3000/delivery";
+    return dispatch({ type: SIGN_OUT, payload: {} });
+  } catch (error) {
+    return dispatch({ type: "ERROR", payload: error });
+  }
+};
+//okay 
 
 export const signUp = (userData) => async (dispatch) => {
   try {
@@ -48,10 +59,12 @@ export const signUp = (userData) => async (dispatch) => {
     });
     getMyself();
 
-    localStorage.setItem("zomatoUser", JSON.stringify({token: User.data.token}));
-    
+    localStorage.setItem(
+      "zomatoUser",
+      JSON.stringify({ token: User.data.token })
+    );
 
-    return dispatch({ type : SIGN_UP , payload: User.data });
+    return dispatch({ type: SIGN_UP, payload: User.data });
   } catch (error) {
     return dispatch({ type: "ERROR", payload: error });
   }
@@ -72,5 +85,3 @@ export const signUp = (userData) => async (dispatch) => {
 //     return dispatch({ type: "ERROR", payload: error });
 //   }
 // };
-
-

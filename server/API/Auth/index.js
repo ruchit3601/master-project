@@ -19,11 +19,12 @@ Desc    Register new user
 Params  none
 Access  Public
 Method  POST
+// can u check in ur repo
+// ok 
 */
 Router.post("/signup", async (req, res) => {
     try {
         await ValidateSignup(req.body.credentials);
-
         await UserModel.findByEmailAndPhone(req.body.credentials);
         const newUser = await UserModel.create(req.body.credentials);
         const token = newUser.generateJwtToken();

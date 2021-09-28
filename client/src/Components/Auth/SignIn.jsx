@@ -24,6 +24,7 @@ export default function SignIn({ isOpen, setIsOpen }) {
       email: "",
       password: "",
     });
+    console.log(userData);
     dispatch(signIn(userData));
   };
   const googlesignin = () => (window.location.href = "http://localhost:5000/auth/google" );

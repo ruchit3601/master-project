@@ -15,7 +15,9 @@ BODY      none
 Access    Public
 Method    GET  
 */
-Router.get("/", async (req, res) => {
+// i also had the same issue i will check my repo 1 min
+// ok
+Router.get("/",passport.authenticate('jwt'), async (req, res) => {
   try {
     const { email, fullname, phoneNumber, address } = 
       req.session.passport.user._doc;

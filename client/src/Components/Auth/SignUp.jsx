@@ -1,12 +1,12 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import {FcGoogle} from "react-icons/fc"
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 
-import { signUp } from '../../Redux/Reducer/Auth/Auth.action';
+import { signUp } from "../../Redux/Reducer/Auth/Auth.action";
 
 export default function SignUp({ isOpen, setIsOpen }) {
-  const [ userData, setUserData ] = useState({
+  const [userData, setUserData] = useState({
     email: "",
     password: "",
     fullname: "",
@@ -14,10 +14,11 @@ export default function SignUp({ isOpen, setIsOpen }) {
 
   const dispatch = useDispatch();
 
-  const handleChange = (e) => setUserData(prev => ({...prev, [e.target.id]: e.target.value }));
+  const handleChange = (e) =>
+    setUserData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   const submit = () => {
@@ -26,10 +27,10 @@ export default function SignUp({ isOpen, setIsOpen }) {
       password: "",
       fullname: "",
     });
-    dispatch(signUp(userData)); 
+    dispatch(signUp(userData));
   };
-  const googlesignin = () => (window.location.href = "http://localhost:5000/auth/google" );
-
+  const googlesignin = () =>
+    (window.location.href = "http://localhost:5000/auth/google");
 
   return (
     <>
@@ -72,47 +73,54 @@ export default function SignUp({ isOpen, setIsOpen }) {
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
-                >
-                </Dialog.Title>
+                ></Dialog.Title>
                 <div className="mt-2 flex flex-col  felx-col gap-3 w-full">
-                  <button onClick={googlesignin} className="py-2 justify-center rounded-lg flex  item-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
-                      SignUp with Google <FcGoogle />
+                  <button
+                    onClick={googlesignin}
+                    className="py-2 justify-center rounded-lg flex  item-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100"
+                  >
+                    SignUp with Google <FcGoogle />
                   </button>
                   <form className="flex flex-col gap-3">
                     <div className="w-full flex flex-col gap-2">
-                        <label htmlFor="fullname">Fullname</label>
-                        <input 
-                            type="text" 
-                            id="fullname" 
-                            value={userData.fullname}
-                            onChange={handleChange}
-                            placeholder="Jhon Doe"
-                            className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400" 
-                        />
+                      <label htmlFor="fullname">Fullname</label>
+                      <input
+                        type="text"
+                        id="fullname"
+                        value={userData.fullname}
+                        onChange={handleChange}
+                        placeholder="Jhon Doe"
+                        className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
+                      />
                     </div>
                     <div className="w-full flex flex-col gap-2">
-                        <label htmlFor="email">Email</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            value={userData.email}
-                            onChange={handleChange}
-                            placeholder="email@email.com"
-                            className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400" 
-                        />
+                      <label htmlFor="email">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        value={userData.email}
+                        onChange={handleChange}
+                        placeholder="email@email.com"
+                        className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
+                      />
                     </div>
                     <div className="w-full flex flex-col gap-2">
-                        <label htmlFor="password">Password</label>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            value={userData.password}
-                            onChange={handleChange}
-                            placeholder="********"
-                            className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400" 
-                        />
-                    </div>                    
-                    <div onClick={submit} className="w-full text-center bg-zomato-400 text-white py-2 rounded-lg">Sign Up</div>
+                      <label htmlFor="password">Password</label>
+                      <input
+                        type="password"
+                        id="password"
+                        value={userData.password}
+                        onChange={handleChange}
+                        placeholder="********"
+                        className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
+                      />
+                    </div>
+                    <div
+                      onClick={submit}
+                      className="w-full text-center bg-zomato-400 text-white py-2 rounded-lg"
+                    >
+                      Sign Up
+                    </div>
                   </form>
                 </div>
               </div>
@@ -121,5 +129,5 @@ export default function SignUp({ isOpen, setIsOpen }) {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }
