@@ -6,6 +6,7 @@ import {
 } from "react-icons/io";
 import { RiCloseFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 
 //  component
 import FoodItem from "./FoodItem";
@@ -15,6 +16,9 @@ import { getCart } from "../../Redux/Reducer/Cart/Cart.action";
 
 const CartSM = ({ toggle }) => {
   const reduxState = useSelector((global) => global.cart?.cart);
+  const history = useHistory();
+
+  const continueToCheckout = () => history.push("/checkout/orders");
 
   return (
     <>
@@ -28,7 +32,7 @@ const CartSM = ({ toggle }) => {
             <sub>(plus tax)</sub>
           </h4>
         </div>
-        <button className="flex items-center gap-1 text-white bg-zomato-400 px-3 py-1 rounded-lg">
+        <button onClick={continueToCheckout} className="flex items-center gap-1 text-white bg-zomato-400 px-3 py-1 rounded-lg">
           Continue <IoMdArrowDropright />
         </button>
       </div>
@@ -38,6 +42,9 @@ const CartSM = ({ toggle }) => {
 
 const CartLG = ({ toggle }) => {
   const reduxState = useSelector((global) => global.cart?.cart);
+    const history = useHistory();
+
+    const continueToCheckout = () => history.push("/checkout/orders");
 
   return (
     <>
@@ -56,7 +63,7 @@ const CartLG = ({ toggle }) => {
             Subtotal:₹
             {reduxState.reduce((acc, curVal) => acc + curVal.totalPrice, 0)}
           </h4>
-          <button className="flex items-center text-lg h-10 font-light gap-1 text-white bg-zomato-400 px-3 py-1 rounded-lg">
+          <button onClick={continueToCheckout} className="flex items-center text-lg h-10 font-light gap-1 text-white bg-zomato-400 px-3 py-1 rounded-lg">
             Continue <IoMdArrowDropright />
           </button>
         </div>
@@ -79,30 +86,28 @@ const CartContainer = () => {
 
   return (
     <>
-      {isOpen && (
-        <div className="fixed w-full overflow-y-scroll h-48 bg-white z-10 p-2 bottom-16 px-3">
-          <div className="flex items-center justify-between md:p-10">
-            <h3 className="text-xl font-semibold">Your Orders</h3>
-            <RiCloseFill onClick={closeCart} />
-          </div>
-          <hr className="my-2" />
-
-          <div className=" flex flex-col gap-2 md:px-10">
-            {reduxState.map((food) => (
-              <FoodItem
-                name={food.name}
-                quantity={food.quantity}
-                price={food.price}
-              />
-            ))}
-          </div>
-        </div>
-      )}
       {reduxState.length && (
-        <div className="fixed w-full bg-white z-10 px-3 p-2 bottom-0">
-          <CartSM toggle={toggleCart} />
-          <CartLG toggle={toggleCart} />
-        </div>
+        <>
+          {isOpen && (
+            <div className="fixed w-full overflow-y-scroll h-48 bg-white z-10 p-2 bottom-16 px-3">
+              <div className="flex items-center justify-between md:p-10">
+                <h3 className="text-xl font-semibold">Your Orders</h3>
+                <RiCloseFill onClick={closeCart} />
+              </div>
+              <hr className="my-2" />
+
+              <div className=" flex flex-col gap-2 md:px-10">
+                {reduxState.map((food) => (
+                  <FoodItem key={food._id} {...food}/>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="fixed w-full bg-white z-10 px-3 p-2 bottom-0">
+            <CartSM toggle={toggleCart} />
+            <CartLG toggle={toggleCart} />
+          </div>
+        </>
       )}
     </>
   );
