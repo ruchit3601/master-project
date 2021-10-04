@@ -1,0 +1,28 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "ruchit3601/zomato-client",
+            "hostname": "client",
+            "essentials": false,
+            "menory": 128
+        },
+        {
+            "name": "nodeserver",
+            "image": "ruchit3601/zomato-server",
+            "hostname": "nodeserver",
+            "essentials": false,
+            "menory": 128
+        },
+        {
+            "name": "nginx",
+            "image": "ruchit3601/zomato-nginx",
+            "hostname": "nginx",
+            "essentials": true,
+            "portMappings": [{"hostPort": 80, "containerPort": 80}],
+            "links": ["client", "nodeserver"],
+            "menory": 128
+        }
+    ]
+}
