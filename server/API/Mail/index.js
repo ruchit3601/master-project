@@ -1,7 +1,7 @@
 import express from "express";
 import mailgun from "mailgun-js";
 
-import { initailizeMailgun } from "../../Config/mail.config";
+import { initailizeMailgun } from "../../config/mail.config";
 
 const Router = express.Router();
 
