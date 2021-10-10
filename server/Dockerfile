@@ -17,5 +17,9 @@ ENV MAILGUN_API_KEY="c5d1617986d87b1ff6df9b2b0f929f8f-90346a2d-a6984972"
 ENV MAILGUN_DOMAIN="sandboxccd2c97282ad4f369c466381e3ad3caa.mailgun.org"
 ENV RZR_PAY_ID=rzp_test_cY0KqHvb8Afe8c
 ENV RZR_PAY_SECRET=sAJjzz73SHddCxrJ5GoxMdJi
+ENV NODE_ENV=production
+ENV PORT=4000
+
+RUN npm run build
 
 CMD ["npm", "run", "start"]
