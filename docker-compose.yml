@@ -34,7 +34,7 @@ services:
       - "5000:5000"
   client:
     build:
-      dockerfile: dockerfile: Dockerfile
+      dockerfile: Dockerfile
       context: ./client
     volumes:
       - /app/node_modules
