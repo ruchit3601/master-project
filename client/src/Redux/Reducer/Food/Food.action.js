@@ -1,12 +1,14 @@
 import axios from "axios";
 
-import { GET_FOOD_LIST ,GET_FOOD } from "./Food.type";
+import { GET_FOOD_LIST, GET_FOOD } from "./Food.type";
+
+import { API_URL, CLIENT_URL } from "../../../Key";
 
 export const getFood = (foodId) => async (dispatch) => {
   try {
     const Food = await axios({
       method: "GET",
-      url: `http://localhost:5000/food/${foodId}`,
+      url: `${API_URL}/food/${foodId}`,
     });
     return dispatch({
       type : GET_FOOD,
@@ -23,7 +25,7 @@ export const getFoodList = (menuId) => async (dispatch) => {
   try {
     const Menu = await axios({
       method: "GET",
-      url: `http://localhost:5000/menu/list/${menuId}`,
+      url: `${API_URL}/menu/list/${menuId}`,
     });
     return dispatch({
       type: GET_FOOD_LIST,

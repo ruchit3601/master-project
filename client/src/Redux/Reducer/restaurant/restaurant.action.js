@@ -2,11 +2,13 @@ import axios from "axios";
 
 import { GET_RESTAURANT, GET_SPECIFIC_RESTAURANT } from "./restaurant.type";
 
+import { API_URL } from "../../../Key";
+
 export const getRestaurant = () => async (dispatch) => {
   try {
     const restaurantList = await axios({
       method: "GET",
-      url: "http://localhost:5000/restaurant?city=Ahmedabad",
+      url: `${API_URL}/restaurant?city=Ahmedabad`,
     });
     return dispatch({
       type: GET_RESTAURANT,
@@ -24,7 +26,7 @@ export const getSpecificRestaurant = (_id) => async (dispatch) => {
   try {
     const restaurant = await axios({
       method: "GET",
-      url: `http://localhost:5000/restaurant/${_id}`,
+      url: `${API_URL}/restaurant/${_id}`,
     });
 
     return dispatch({

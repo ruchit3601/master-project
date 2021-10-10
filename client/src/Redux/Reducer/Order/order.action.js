@@ -1,12 +1,15 @@
 import axios from "axios";
 
+
 import { CREATE_ORDER, ORDER_PLACED } from "./order.type";
+
+import { API_URL } from "../../../Key";
 
 export const createOrder = (amount) => async (dispatch) => {
   try {
     const order = await axios({
       method: "POST",
-      url: "http://localhost:5000/payments/new",
+      url: `${API_URL}/payments/new`,
       data: { amount },
     });
     return dispatch({ type: CREATE_ORDER, payload: order.data });
@@ -34,7 +37,7 @@ export const orderPlaced = (cartData) => async (dispatch) => {
 
       axios({
         method: "POST",
-        url: `http://localhost:5000/order/new`,
+        url: `${API_URL}/order/new`,
         data: { orderDetails },
       });
     });

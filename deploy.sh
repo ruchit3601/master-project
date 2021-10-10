@@ -1,0 +1,1 @@
+ssh "ubuntu@3.110.46.66" "cd app/zomato-clone && docker-compose stop && git pull origin master && docker-compose up -d --build && exit"
