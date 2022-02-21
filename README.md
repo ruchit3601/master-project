@@ -19,9 +19,10 @@ Modules used-
   6. also users can order medicines from it by using Nutritions tab.
   
   # screensort
+    ![Delivery!](image2.jpeg)
+    <img src="C:\Users\Ruchit\OneDrive\Documents\RUCHIT" width="128"/>
+    ![overview!](image3.jpeg)
     
-    ![overview!](./image2.jpeg)
-
     ![onlineorder!](image4.jpeg)
     ![paymnent!](image5.jpeg)
 
