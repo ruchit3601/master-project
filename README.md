@@ -20,7 +20,7 @@ Modules used-
   
   # screensort
     ![Delivery](./image2.png)
-    <img src="C:\Users\Ruchit\OneDrive\Documents\RUCHIT" width="128"/>
+    <img src="https://drive.google.com/file/d/1HUiSQ_GwlvRmbP2iPkCnz8Ajh3STwgf7/view?usp=sharing" alt="Delivery page"/>
     ![overview!](image3.jpeg)
     
     ![onlineorder!](image4.jpeg)
