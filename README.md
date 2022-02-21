@@ -19,7 +19,7 @@ Modules used-
   6. also users can order medicines from it by using Nutritions tab.
   
   # screensort
-    <img src="https://drive.google.com/file/d/1mQ240P2vpVswP7pgxTTAN0JKdMrOOAFG/view?usp=sharing" alt="Delivery page"/>
+    <img src="https://drive.google.com/file/d/1mQ240P2vpVswP7pgxTTAN0JKdMrOOAFG/view" alt="Delivery page"/>
 
 
 
