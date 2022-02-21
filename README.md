@@ -19,7 +19,11 @@ Modules used-
   6. also users can order medicines from it by using Nutritions tab.
   
   # screensort
-    <img src="C:/Users/Ruchit/OneDrive/Documents/RUCHIT/Web%20capture_18-10-2021_115632_localhost.jpeg" alt="Delivery Page">
-<img src="file:///C:/Users/Ruchit/OneDrive/Documents/RUCHIT/Web%20capture_18-10-2021_115723_localhost.jpeg" alt="restaurant">
+    ![Delivery!](image2.jpeg)
+    ![overview!](image3.jpeg)
+    ![onlineorder!](image4.jpeg)
+    ![paymnent!](image5.jpeg)
+
+
 
   
