@@ -19,9 +19,9 @@ Modules used-
   6. also users can order medicines from it by using Nutritions tab.
   
   # screensort
-    ![Delivery!](image2.jpeg)
-    ![overview!](image3.jpeg)
     
+    ![overview!](./image2.jpeg)
+
     ![onlineorder!](image4.jpeg)
     ![paymnent!](image5.jpeg)
 
