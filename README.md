@@ -21,9 +21,16 @@ Modules used-
   # screensort
   <h3>delivery page<h3>
   <img src="https://github.com/ruchit3601/master-project/blob/master/image2.png">
+  <h3>Overview page<h3>
   <img src="https://github.com/ruchit3601/master-project/blob/master/image3.jpeg">
+  <h3>order page<h3>
   <img src="https://github.com/ruchit3601/master-project/blob/master/image4.jpeg">
+  <h3>payment page<h3>
   <img src="https://github.com/ruchit3601/master-project/blob/master/image5.jpeg">
+
+  # Deployment Link 
+  <h3> Deployed on AWS EC2 instace</h3>
+  http://13.234.14.85:3080/delivery
 
 
 
