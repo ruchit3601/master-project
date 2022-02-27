@@ -19,7 +19,7 @@ Modules used-
   6. also users can order medicines from it by using Nutritions tab.
   
   # screensort
-    <img src="https://github.com/ruchit3601/master-project/blob/master/image2.png" alt="Delivery page"/>
+  <img src="https://github.com/ruchit3601/master-project/blob/master/image2.png">
 
 
 
